@@ -1,0 +1,55 @@
+services:
+  dev:
+    container_name: tanlaw2024_bot_python
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: watchmedo auto-restart --patterns="*.py" --recursive -- python3 -u app.py
+    env_file:
+      - .env
+    networks:
+      - app_network
+    volumes:
+      - .:/usr/src/app
+    restart: unless-stopped
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    container_name: tanlaw2024_bot_postgres
+    environment:
+        POSTGRES_USER: ${DB_USERNAME}
+        POSTGRES_PASSWORD: ${DB_PASSWORD}
+        POSTGRES_DB: ${DB_DATABASE}
+    ports:
+        - "5432:5432"
+    volumes:
+        - postgres_data:/var/lib/postgresql/data
+    networks:
+        - app_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: tanlaw2024_bot_pgadmin
+    environment:
+        PGADMIN_DEFAULT_EMAIL: admin@el-yurt.uz
+        PGADMIN_DEFAULT_PASSWORD: x18{+<s0&YvC
+    ports:
+        - "8080:80"
+    volumes:
+        - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+        - postgres
+    networks:
+        - app_network
+
+volumes:
+  pgadmin_data:
+    driver: local
+  postgres_data:
+    driver: local
+
+networks:
+  app_network:
+    driver: bridge
