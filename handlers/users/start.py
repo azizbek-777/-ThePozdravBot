@@ -33,7 +33,7 @@ async def bot_start(message: types.Message):
     
     # Foydalanuvchining telefon raqami mavjudligini tekshirish
     if not await db.is_exists_phone_by_telegram_id(user_id):
-        await message.answer("Telefon nomeringizdi jiberiń 👇", reply_markup=contact_btn)
+        await message.answer("Telefon nomerińizdi jiberiń", reply_markup=contact_btn)
         return
     
     # Kerakli formatga o'girib olamiz
@@ -45,7 +45,7 @@ async def bot_start(message: types.Message):
         data.append((name, nomination_id))
 
     # To'g'ri parametrni uzatish
-    await message.answer("Dawıs beriw ushın tómendegi nominacialardan birin tańlań👇", reply_markup=nominations_btn(data))
+    await message.answer("Siz qaysı rayon (qala) “Insan” sociallıq xızmetler orayına dawıs beresiz?", reply_markup=nominations_btn(data))
 
 @dp.callback_query_handler(text="check_subs")
 async def checker(call: types.CallbackQuery, state: FSMContext):
@@ -64,7 +64,7 @@ async def checker(call: types.CallbackQuery, state: FSMContext):
         await call.message.delete()
         # Foydalanuvchining telefon raqami mavjudligini tekshirish
         if not await db.is_exists_phone_by_telegram_id(user_id):
-            await call.message.answer("Telefon nomeringizdi jiberiń 👇", reply_markup=contact_btn)
+            await call.message.answer("Telefon nomerińizdi jiberiń", reply_markup=contact_btn)
         else:
             # ReplyKeyboard ni olib tashlash
             remove_keyboard = types.ReplyKeyboardRemove()
@@ -80,7 +80,7 @@ async def checker(call: types.CallbackQuery, state: FSMContext):
 
             # To'g'ri formatlangan ma'lumot bilan 'nominations_btn' funksiyasini chaqirish
             await call.message.answer(
-                "Dawıs beriw ushın tómendegi nominacialardan birin tańlań👇", 
+                "Siz qaysı rayon (qala) “Insan” sociallıq xızmetler orayına dawıs beresiz?", 
                 reply_markup=nominations_btn(data)
             )
 
@@ -117,7 +117,7 @@ async def contact_handler(message: types.Message):
             nomination_id = nomination['id']  # id maydoni o'rniga to'g'ri maydon nomini kiriting
             data.append((name, nomination_id))
             
-        await message.answer("Dawıs beriw ushın tómendegi nominacialardan birin tańlań👇", reply_markup=nominations_btn(data))
+        await message.answer("Siz qaysı rayon (qala) “Insan” sociallıq xızmetler orayına dawıs beresiz?", reply_markup=nominations_btn(data))
 
 
 @dp.message_handler(commands='reyting')
@@ -195,23 +195,21 @@ async def delete_channel(call: types.CallbackQuery):
     
     try:
         if await db.add_vote(user_id=user['id'], nomination_id=nomination['id']):
-            count_votes = await db.count_votes(nomination_id)
-            get_nomination_rank = await db.get_nomination_rank(nomination['id'])
             await call.answer(
-                f'Siz "{title}" nominaciyasına dawıs berdińiz✅\ndawıslar sanı: {count_votes}\nreyting: {get_nomination_rank}',
+                f'Siz "{title}" dawıs berdińiz',
                 show_alert=True
             )
             return
         
         await call.answer(
-            f'"{title}" nominaciyasına dawıs bergenler sanı: {count_votes}\nreyting: {get_nomination_rank}',
+            f'"{title}" dawıs bergenler sanı: {count_votes}\nreyting: {get_nomination_rank}',
             show_alert=True
         )
     except asyncpg.exceptions.UniqueViolationError:
         count_votes = await db.count_votes(nomination_id)
         get_nomination_rank = await db.get_nomination_rank(nomination['id'])
         await call.answer(
-            f'"{title}" nominaciyasına dawıs bergenler sanı: {count_votes}\nreyting: {get_nomination_rank}',
+            f'"{title}" dawıs bergenler sanı: {count_votes}\nreyting: {get_nomination_rank}',
             show_alert=True
         )
         
