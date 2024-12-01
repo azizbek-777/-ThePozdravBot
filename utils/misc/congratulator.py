@@ -12,6 +12,15 @@ def normalize_timezone(user_timezone: str):
             raise ValueError(f"Invalid timezone format: {user_timezone}")
     return pytz_timezone(user_timezone)  # Assume it's a valid named timezone
 
+russian_months = [
+    "январь", "февраль", "март", "апрель", "май", "июнь",
+    "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"
+]
+
+# Function to format birthday in Russian style
+def format_birthday(birthday: datetime):
+    return f"{birthday.day} {russian_months[birthday.month - 1]}"
+
 async def send_congratulation_message(dp: Dispatcher, db):
     try:
         # Fetch reminder data once
@@ -29,8 +38,11 @@ async def send_congratulation_message(dp: Dispatcher, db):
                     username = f"<a href='tg://user?id={user.id}'>{user.full_name}</a>"
                 else:
                     username = f"@{username}"
+                
+                formatted_birthday = format_birthday(birthday)  # Format the birthday
+                
                 message = (
-                    f"🥳 Сегодня, <b>{birthday}</b>, день рождения у {username}!\n\n"
+                    f"🥳 Сегодня, <b>{formatted_birthday}</b>, день рождения у {username}!\n\n"
                     "Давайте поздравим с этим замечательным днем! 🎉\n"
                     "Пожелаем счастья, крепкого здоровья, успехов и исполнения всех желаний.\n\n"
                     f"Сделаем этот день особенным для {username}! 🎁✨"
@@ -40,7 +52,7 @@ async def send_congratulation_message(dp: Dispatcher, db):
 
                 # Send personal birthday message
                 message = (
-                    f"🥳 Сегодня *{birthday}* — ваш день рождения!\n\n"
+                    f"🥳 Сегодня *{formatted_birthday}* — ваш день рождения!\n\n"
                     "Поздравляем вас с этим замечательным событием! 🎉\n"
                     "Желаем счастья, крепкого здоровья, успехов во всех начинаниях и исполнения самых заветных желаний.\n\n"
                     "Пусть этот день станет незабываемым! 🎁✨"

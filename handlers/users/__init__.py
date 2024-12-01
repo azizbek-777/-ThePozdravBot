@@ -11,6 +11,8 @@ from . import new_chat_member
 from . import help
 from . import my_groups
 
+from . import callback_reminder_my_group
+
 from . import process_year_navigation
 from . import process_pagination
 from . import process_year_selection

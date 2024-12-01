@@ -17,6 +17,6 @@ def scheduler_jobs():
     scheduler.add_job(
         send_congratulation_message,
         "interval",
-        minutes=30,
+        days=1,
         args=(dp,db),
     )

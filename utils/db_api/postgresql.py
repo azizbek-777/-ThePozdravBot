@@ -71,6 +71,7 @@ class Database:
             id SERIAL PRIMARY KEY,
             group_id BIGINT NOT NULL,
             user_id BIGINT NOT NULL,
+            is_reminder_on BOOLEAN NOT NULL DEFAULT TRUE,
             created_at DATE NOT NULL DEFAULT CURRENT_DATE,
             updated_at DATE NOT NULL DEFAULT CURRENT_DATE
         );
@@ -137,11 +138,24 @@ class Database:
         FROM 
             public.remindergroups rg
         JOIN 
-            users u 
+            users u
         ON 
             rg.user_id = u.telegram_id
+        WHERE
+            rg.is_reminder_on = TRUE
         """
         return await self.execute(query, fetch=True)
+    
+    async def get_reminder_my_group(self, id, user_id):
+        query = """
+        SELECT 
+            *
+        FROM 
+            public.remindergroups rg
+        WHERE
+            rg.id = $1 AND rg.user_id = $2
+        """
+        return await self.execute(query, id, user_id, fetch=True)
     
         
     async def get_reminder_groups_with_users_where_group_id(self, group_id):
