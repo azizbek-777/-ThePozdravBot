@@ -9,6 +9,7 @@ from . import set_locale
 
 from . import new_chat_member
 from . import help
+from . import my_groups
 
 from . import process_year_navigation
 from . import process_pagination

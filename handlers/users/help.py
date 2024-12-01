@@ -3,15 +3,8 @@ from aiogram.dispatcher.filters.builtin import CommandHelp
 
 from loader import dp
 
-@dp.message_handler(CommandHelp())
+@dp.message_handler(CommandHelp(), chat_type="private")
 async def bot_help(message: Message):
-    if message.chat.type == "private":
-        text = "/language - Изменение языка бота" \
-        "/my_birthday - Изменить ili Добавить день рождения\n"
-        await message.reply(text)
-        return
-    
-    text = "/list_birthday - Список день рождения участников группы\n" \
-        "/my_birthday - Изменить ili Добавить день рождения\n"
-    await message.reply(text) 
-    
+    text = "/language - Изменение языка бота" \
+    "/my_birthday - Изменить ili Добавить день рождения\n"
+    await message.reply(text)

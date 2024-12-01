@@ -7,3 +7,4 @@ from .add_group_keyboard import add_group_keyboard
 from .languages_keyboard import languages_keyboard
 from .edit_birthday_keyboard import edit_birthday_keyboard
 from .add_birthday_keyboard import add_birthday_keyboard
+from .my_groups_keyboard import my_groups_keyboard

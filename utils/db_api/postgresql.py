@@ -112,6 +112,20 @@ class Database:
             users
         """
         return await self.execute(query, fetch=True)
+        
+    async def my_reminder_groups(self, user_id):
+        query = """
+        SELECT 
+            rg.id, 
+            rg.group_id, 
+            rg.user_id
+        FROM 
+            public.remindergroups rg
+        WHERE
+            rg.user_id = $1
+        """
+        return await self.execute(query, user_id, fetch=True)
+
     
     async def get_reminder_groups_with_users(self):
         query = """
@@ -128,6 +142,27 @@ class Database:
             rg.user_id = u.telegram_id
         """
         return await self.execute(query, fetch=True)
+    
+        
+    async def get_reminder_groups_with_users_where_group_id(self, group_id):
+        query = """
+            SELECT 
+                rg.group_id, 
+                rg.user_id, 
+                u.birthday, 
+                u.timezone 
+            FROM 
+                public.remindergroups rg
+            JOIN 
+                users u 
+            ON 
+                rg.user_id = u.telegram_id
+            WHERE
+                rg.group_id = $1
+            ORDER BY
+                u.birthday DESC
+        """
+        return await self.execute(query, group_id, fetch=True)
 
     async def add_user(self, full_name, username, telegram_id):
         sql = "INSERT INTO users (full_name, username, telegram_id) VALUES($1, $2, $3) returning *"
