@@ -1,6 +1,6 @@
 services:
   dev:
-    container_name: tanlaw2024_bot_python
+    container_name: NoteBirthdayBot_python
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -17,7 +17,7 @@ services:
 
   postgres:
     image: postgres:latest
-    container_name: tanlaw2024_bot_postgres
+    container_name: NoteBirthdayBot_postgres
     environment:
         POSTGRES_USER: ${DB_USERNAME}
         POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -31,7 +31,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: tanlaw2024_bot_pgadmin
+    container_name: NoteBirthdayBot_pgadmin
     environment:
         PGADMIN_DEFAULT_EMAIL: admin@el-yurt.uz
         PGADMIN_DEFAULT_PASSWORD: x18{+<s0&YvC
