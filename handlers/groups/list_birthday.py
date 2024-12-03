@@ -1,19 +1,17 @@
 from aiogram.types import Message
-from aiogram.dispatcher.filters.builtin import CommandHelp
+from aiogram.dispatcher import FSMContext
 from datetime import datetime
 
+from lang.messages import MESSAGES
 from loader import dp, db
 
-russian_months = [
-    "январь", "февраль", "март", "апрель", "май", "июнь",
-    "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"
-]
-
 @dp.message_handler(commands=["list_birthday"], chat_type="group")
-async def list_birthday(message: Message):
+async def list_birthday(message: Message, state: FSMContext):
+    data = await state.get_data()
+    locale = data.get("locale", "ru")
     data = await db.get_reminder_groups_with_users_where_group_id(message.chat.id)
     
-    text = "Список день рождения участников группы \n\n"
+    text = MESSAGES[locale]["birthday_list_group"]
     i = 1
     for _, user_id, birthday, _ in data:
         user = await dp.bot.get_chat(user_id)
@@ -22,9 +20,9 @@ async def list_birthday(message: Message):
         day = date_obj.day
         month = date_obj.month
         
-        formatted_date = f"{day} {russian_months[month - 1]}"
+        formatted_date = f"{day} {MESSAGES[locale]['months'][month - 1]}"
         
-        text += f"{i}. <a href='tg://user?id={user.id}'>{user.full_name}</a> - {formatted_date}\n"
+        text += MESSAGES[locale]["birthday_list_item"].format(user.id, user.full_name, formatted_date)
         i += 1
         
     await message.reply(text)

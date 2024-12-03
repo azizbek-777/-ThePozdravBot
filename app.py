@@ -11,7 +11,7 @@ async def on_startup(dispatcher):
     await db.create_all_tables()
 
     # Birlamchi komandalar (/star va /help)
-    await set_default_commands(dispatcher)
+    # await set_default_commands(dispatcher)
 
     # Bot ishga tushgani haqida adminga xabar berish
     await on_startup_notify(dispatcher)

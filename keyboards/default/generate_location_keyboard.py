@@ -1,10 +1,12 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
-def generate_location_keyboard():
+from lang.messages import MESSAGES
+
+def generate_location_keyboard(locale):
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
     buttons = [
-        KeyboardButton(text="Отправить локацию", request_location=True),
-        KeyboardButton(text="Не хочу")
+        KeyboardButton(text=MESSAGES[locale]['send_location'], request_location=True),
+        KeyboardButton(text=MESSAGES[locale]['dont_want'])
     ]
     keyboard.add(*buttons)
     return keyboard

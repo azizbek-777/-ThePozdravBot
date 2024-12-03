@@ -1,10 +1,9 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-def generate_months_keyboard(year: int):
-    months = [
-        "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
-        "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
-    ]
+from lang.messages import MESSAGES
+
+def generate_months_keyboard(year: int, locale):
+    months = MESSAGES[locale]["months"]
     
     keyboard = InlineKeyboardMarkup(row_width=3)
 

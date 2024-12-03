@@ -3,7 +3,7 @@ from aiogram.types import ReplyKeyboardMarkup
 
 from keyboards.inline import add_birthday_keyboard
 
-def generate_birthday_message(bot_username: str, chat_id: int) -> tuple[str, ReplyKeyboardMarkup]:
+def generate_birthday_message(bot_username: str, chat_id: int, locale) -> tuple[str, ReplyKeyboardMarkup]:
     """
     Generates a birthday message and reply markup.
 
@@ -18,11 +18,11 @@ def generate_birthday_message(bot_username: str, chat_id: int) -> tuple[str, Rep
     )
 
     # Replace this with your actual reply markup generation logic
-    reply_markup = add_birthday_keyboard(bot_username, chat_id)
+    reply_markup = add_birthday_keyboard(bot_username, chat_id, locale)
     return text, reply_markup
 
 
-async def send_birthday_message(message: Message, bot_username: str):
+async def send_birthday_message(message: Message, bot_username: str, locale):
     """
     Sends the birthday message to the user.
 

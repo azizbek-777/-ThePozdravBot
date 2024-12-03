@@ -1,10 +1,14 @@
 from aiogram.types import Message, ReplyKeyboardRemove
+from aiogram.dispatcher import FSMContext
 
+from lang.messages import MESSAGES
 from loader import dp
 from utils.misc import add_group_message
 
-@dp.message_handler(text="Не хочу")
-async def process_location_decline(message: Message):
-    text = "Ваш день рождения сохранен, и ваша таймзона установлена по умолчанию (GMT+5). Теперь я буду напоминать о вашем дне рождения в нужное время."
+@dp.message_handler(text=["Не хочу", "Istamayman"])
+async def process_location_decline(message: Message, state: FSMContext):
+    data = await state.get_data()
+    locale = data.get("locale", "ru")
+    text = MESSAGES[locale]["birthday_timezone_set"]
     await message.answer(text, reply_markup=ReplyKeyboardRemove())
-    await add_group_message(message, dp)
+    await add_group_message(message, dp, locale)

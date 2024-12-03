@@ -1,15 +1,19 @@
 import asyncpg
 from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
+from aiogram.dispatcher import FSMContext
 import base64
 
 from keyboards.inline import languages_keyboard
+from lang.messages import MESSAGES
 from loader import dp, db, bot
 from data.config import ADMINS
 
 
 @dp.message_handler(CommandStart(), chat_type=types.ChatType.PRIVATE)
-async def bot_start(message: types.Message):
+async def bot_start(message: types.Message, state: FSMContext):
+    data = await state.get_data()
+    locale = data.get("locale", "ru")
     try:
         # Add new user to the database and get the user count
         user = await db.add_user(telegram_id=message.from_user.id,
@@ -50,20 +54,13 @@ async def bot_start(message: types.Message):
                     birthday = await db.get_user_birthday(message.from_user.id)
                     
                     if birthday:
-                        # Notify user of successful birthday reminder setup
                         group = await bot.get_chat(int(chat_id))
-                        text = (
-                            f"✅ Ваш день рождения успешно добавлен в группу “<a href='tg://user?id={chat_id}'>{group.title}</a>”\n\n"
-                            "Теперь в день вашего рождения в группу будет отправляться сообщение с напоминанием.\n\n"
-                            "Чтобы управлять напоминаниями в группах, отправьте /my_groups"
-                        )
+                        text = MESSAGES[locale]["birthday_added_to_group"].format(chat_id, group.title)
                         await message.answer(text)
                         return
         except (base64.binascii.Error, ValueError) as e:
-            # Log error if base64 decode or split fails
             print(f"Error decoding state: {e}")
             
-    # If no valid state, resend language selection message
     await message.answer(
         "Выберите язык, на котором хотите использовать бота [ru]\n\n"
         "Botdan foydalanmoqchi bo'lgan tilni tanlang [uz]\n\n"

@@ -126,6 +126,18 @@ class Database:
             rg.user_id = $1
         """
         return await self.execute(query, user_id, fetch=True)
+    
+    async def my_reminder_group_on(self, user_id, group_id, status: bool):
+        # update remindergroups set is_reminder_on = false where user_id = 1 and group_id = 1
+        query = """
+        UPDATE
+            public.remindergroups
+        SET
+            is_reminder_on = $1
+        WHERE
+            user_id = $2 AND group_id = $3
+        """
+        return await self.execute(query, status, user_id, group_id, execute=True)
 
     
     async def get_reminder_groups_with_users(self):

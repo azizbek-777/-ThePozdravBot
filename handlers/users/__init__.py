@@ -10,8 +10,11 @@ from . import set_locale
 from . import new_chat_member
 from . import help
 from . import my_groups
+from . import go_back
 
 from . import callback_reminder_my_group
+from . import on_off_reminder_in_group
+from . import view_participants_birthday
 
 from . import process_year_navigation
 from . import process_pagination

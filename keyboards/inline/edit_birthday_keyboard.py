@@ -1,8 +1,10 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-def edit_birthday_keyboard():
+from lang.messages import MESSAGES
+
+def edit_birthday_keyboard(locale):
     keyboard = InlineKeyboardMarkup()
-    add_group_button = InlineKeyboardButton(text="Изменить", 
+    add_group_button = InlineKeyboardButton(text=MESSAGES[locale]['edit'], 
                                             callback_data=f"edit_birthday")
     keyboard.add(add_group_button)
     return keyboard
