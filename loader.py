@@ -1,6 +1,8 @@
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from apscheduler.triggers.cron import CronTrigger
+from pytz import timezone
 
 from data import config
 from utils.db_api.postgresql import Database
@@ -16,7 +18,6 @@ scheduler = AsyncIOScheduler()
 def scheduler_jobs():
     scheduler.add_job(
         send_congratulation_message,
-        "interval",
-        days=1,
-        args=(dp,db),
+        CronTrigger(hour=0, minute=0, timezone=timezone('Asia/Tashkent')),  # Soat 00:00, Tashkent vaqti
+        args=(dp, db),
     )

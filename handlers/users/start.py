@@ -43,7 +43,6 @@ async def bot_start(message: types.Message, state: FSMContext):
                 get_reminder_group = await db.reminder_group_exists(int(chat_id), message.from_user.id)
                 if not get_reminder_group:
                     await db.add_reminder_group(int(chat_id), message.from_user.id)
-                    return
             if birthday:
                 group = await bot.get_chat(int(chat_id))
                 text = MESSAGES[locale]["birthday_added_to_group"].format(chat_id, group.title)
