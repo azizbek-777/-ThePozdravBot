@@ -5,7 +5,7 @@ from datetime import datetime
 from lang.messages import MESSAGES
 from loader import dp, db
 
-@dp.message_handler(commands=["list_birthday"], chat_type="group")
+@dp.message_handler(commands=["list_birthday"], chat_type=["group", "supergroup"])
 async def list_birthday(message: Message, state: FSMContext):
     data = await state.get_data()
     locale = data.get("locale", "ru")
