@@ -45,6 +45,8 @@ MESSAGES = {
         "dont_want": "Не хочу",
         "my_groups": "Мои группы",
         "my_birthday": "Мой день рождения",
+        "your_birthday_in": "Ваш день рождения через {} дней",
+        "your_birthday_ago": "Ваш день рождения был {} дней назад",
     },
     "uz": {
         "hello": "Assalomu alaykum, <a href='tg://user?id={}'>{}</a>!\nMen guruhingizda tug‘ilgan kunlarni eslatishga yordam beraman. Botdan foydalanish orqali siz <a href='https://telegra.ph/Obrabotka-dannyh-11-29'>foydalanuvchi shartnomasi</a>ga rozilik bildirasiz.",
@@ -90,7 +92,9 @@ MESSAGES = {
         "send_location": "Geolokatsiya yuborish",
         "dont_want": "Yuborishni xohlamayman",
         "my_groups": "Mening guruhlarim",
-        "my_birthday": "Mening tug'ilgan kunim"
+        "my_birthday": "Mening tug'ilgan kunim",
+        "your_birthday_in": "Sizning tug'ilgan kuningiz {} kundan keyin",
+        "your_birthday_ago": "Sizning tug'ilgan kuningiz {} kun oldin edi",
     },
     "ka": {
         "hello": "Assalawma aleykum, <a href='tg://user?id={}'>{}</a>! \nMen toparıńızda tuwılǵan kúnlerdi esletiwge járdem beremen. Botdan paydalanıw arqalı siz <a href='https://telegra.ph/Obrabotka-dannyh-11-29'>paydalanıwshı shártnaması</a>ǵa razılıq bildiresiz.",
@@ -136,6 +140,9 @@ MESSAGES = {
         "send_location": "Geolokatsiya jiberiw",
         "dont_want": "Jibere almayman",
         "my_groups": "Mening toparlarım",
-        "my_birthday": "Meniń tuwılǵan kúnim"
+        "my_birthday": "Meniń tuwılǵan kúnim",
+        "your_birthday_in": "Siziń tuwilgan kúniniz {} kúnnen keyin",
+        "your_birthday_ago": "Siziń tuwilgan kúniniz {} kún burın edi",
+        
     },
 }
