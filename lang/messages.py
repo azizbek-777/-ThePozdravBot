@@ -123,9 +123,9 @@ MESSAGES = {
         "select_birth_day": "Endi tuwılǵan kúnińizdi saylań :",
         "select_birth_month": "Ájayıp! Endi tuwılǵan ayıńızdı saylań :",
         "language_changed": "Bot tili tabıslı ózgertildi! \nBottan paydalanıwda dawam etiwińiz múmkin. ",
-        "birthday_added_to_group": "✅ Sizdiń tuwılǵan kúnińiz “<a href='tg://user?id={}'>{}” toparına tabıslı qosıldı. \n\nEndi tuwılǵan kúnińizde toparǵa esletpe jiberiledi. \n\nToparlardaǵı esletpelerdi basqarıw ushın /my_groups jiberiń. ",
-        "birthday_list_group": "Topar aǵzalarınıń tuwılǵan kúnleri dizimi\n “{}” \n\n",
-        "birthday_list_item": "{}. <a href='tg://user?id={}'>{} - {}\n",
+        "birthday_added_to_group": "✅ Sizdiń tuwılǵan kúnińiz “<a href='tg://user?id={}'>{}</a>” toparına tabıslı qosıldı. \n\nEndi tuwılǵan kúnińizde toparǵa esletpe jiberiledi. \n\nToparlardaǵı esletpelerdi basqarıw ushın /my_groups jiberiń. ",
+        "birthday_list_group": "Topar aǵzalarınıń tuwılǵan kúnleri dizimi\n <b>“{}”</b> \n\n",
+        "birthday_list_item": "{}. <a href='tg://user?id={}'>{}</a> - {}\n",
         "months":[
             "yanvar", "fevral", "mart", "aprel", "may", "iyun",
             "iyul", "avgust", "sentyabr", "oktyabr", "noyabr", "dekabr"
