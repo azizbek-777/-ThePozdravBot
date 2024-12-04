@@ -99,7 +99,7 @@ MESSAGES = {
     "ka": {
         "hello": "Assalawma aleykum, <a href='tg://user?id={}'>{}</a>! \nMen toparıńızda tuwılǵan kúnlerdi esletiwge járdem beremen. Botdan paydalanıw arqalı siz <a href='https://telegra.ph/Obrabotka-dannyh-11-29'>paydalanıwshı shártnaması</a>ǵa razılıq bildiresiz.",
         "welcome": "Xosh keldińiz @{}!\nDawam eytıw ushin túymeni basıń 👇",
-        "add_group": "Tuwılǵan kún esletpelerin jiberiwim ushın meni toparǵa qosıń! Qosıw ushın tómendegi tuymeni basıń.",
+        "add_group": "Siziń tuwılǵan kúnińizdi jaqın tanıslarıńızǵa esletip turıwım ushın meni telegram toparǵa qosıń! Qosıw ushın tómendegi tuymeni basıń👇",
         "reminder_my_group_info": "Topar atı : {}\n\nEsletpe : {}\n{}\n\nTopar aǵzalarınıń tuwılǵan kúnleri dizimin kóriw ushın 'Topar aǵzaları' tuymesin basıń",
         "reminder_on": "✅ Qosılǵan",
         "reminder_off": "🚫 Óshirilgan",
