@@ -30,5 +30,4 @@ async def process_location(message: Message, state: FSMContext):
             MESSAGES[locale]["birthday_saved_timezone"].format(gmt_offset),
             reply_markup=ReplyKeyboardRemove()
         )
-    else:
         await add_group_message(message, dp, locale)
