@@ -18,7 +18,7 @@ async def set_locale(callback_query: CallbackQuery, state: FSMContext):
         
         birthday = await db.get_user_birthday(callback_query.from_user.id)
         if birthday is None:
-            await set_birthday(callback_query.message, locale)
+            await set_birthday(callback_query.message, locale=locale)
             return
         
         await add_group_message(callback_query.message, dp, locale)

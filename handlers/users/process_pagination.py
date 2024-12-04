@@ -1,5 +1,6 @@
 from aiogram.types import CallbackQuery
 from aiogram.dispatcher.filters import Text
+from datetime import datetime
 
 from keyboards.inline import generate_years_keyboard
 from loader import dp
@@ -15,6 +16,10 @@ async def process_pagination(callback_query: CallbackQuery):
         new_start_year = current_start_year - YEARS_PER_PAGE
     else:
         new_start_year = current_start_year + YEARS_PER_PAGE
+    
+    if new_start_year > datetime.now().year:
+        await callback_query.answer("You can't select future years")
+        return
     
     keyboard = generate_years_keyboard(int(new_start_year))
     await callback_query.message.edit_reply_markup(reply_markup=keyboard)

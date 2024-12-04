@@ -27,13 +27,14 @@ MESSAGES = {
         "language_changed": "Язык бота успешно изменен!\nВы можете продолжать использовать бота.",
         "birthday_added_to_group": "✅ Ваш день рождения успешно добавлен в группу “<a href='tg://user?id={}'>{}</a>”\n\nТеперь в день вашего рождения в группу будет отправляться сообщение с напоминанием.\n\nЧтобы управлять напоминаниями в группах, отправьте /my_groups",
         "birthday_list_group": "Список дней рождения участников группы\n “<b>{}</b>” \n\n",
+        "birthday_list_group_in_group": "Список дней рождения участников группы\n\n",
         "birthday_list_item": "{}. <a href='tg://user?id={}'>{}</a> - {}\n",
         "months": [
             "январь", "февраль", "март", "апрель", "май", "июнь",
             "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"
         ],
         "add_birthday_button": "Нажмите эту кнопку 👇, чтобы добавить свой день рождения.",
-        "commands_list_in_group": "/list_birthday - Список дней рождения участников группы /add - Добавить свой день рождения /language - Изменение языка бота",
+        "commands_list_in_group": "/list_birthday - Список дней рождения участников группы\n/add - Добавить свой день рождения\n/language - Изменение языка бота",
         "add_birthday_kb": "➕ Добавить день рождения",
         "add_to_group": "Добавить в группу",
         "edit": "Изменить",
@@ -54,7 +55,7 @@ MESSAGES = {
         "add_birthday": "✅ Tug'ilgan kunni qo'shing",
         "delete_birthday": "🚫Tug'ilgan kunni o'chirish",
         "participants": "👥 Ishtirokchilar",
-        "orqaga": "⬅ Orqaga",
+        "back": "⬅ Orqaga",
         "select_group": "Sozlanmoqchi bo'lgan guruhni tanlang.",
         "help_command": "/language - Bot tilini o'zgartirish\n/mening_birthday - Tug'ilgan kunni o'zgartirish yoki qo'shish\n",
         "select_language": "🌍 Botdan foydalanmoqchi bo'lgan tilni tanlang:",
@@ -76,7 +77,7 @@ MESSAGES = {
         "Iyul", "avgust", "sentyabr", "oktyabr", "noyabr", "dekabr"
         ],
         "add_birthday_button": "Tug'ilgan kuningizni qo'shish uchun 👇 bu tugmani bosing.",
-        "commands_list_in_group": "/list_birthday - Guruh a'zolarining tug'ilgan kunlari ro'yxati / qo'shish - Tug'ilgan kuningizni qo'shing /til - Bot tilini o'zgartiring",
+        "commands_list_in_group": "/list_birthday - Guruh a'zolarining tug'ilgan kunlari ro'yxati\n/qo'shish - Tug'ilgan kuningizni qo'shing\n /til - Bot tilini o'zgartiring",
         "add_birthday_kb": "➕ Tug'ilgan kunni qo'shish",
         "add_to_group": "Guruhga qo'shish",
         "edit": "Edit",
