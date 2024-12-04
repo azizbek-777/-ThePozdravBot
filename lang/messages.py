@@ -80,7 +80,7 @@ MESSAGES = {
         "commands_list_in_group": "/list_birthday - Guruh a'zolarining tug'ilgan kunlari ro'yxati \n/add - Tug'ilgan kuningizni qo'shish \n/language - Bot tilini o'zgartirish",
         "add_birthday_kb": "➕ Tug'ilgan kunni qo'shish",
         "add_to_group": "Guruhga qo'shish",
-        "edit": "Edit",
+        "edit": "Tahrirlash",
         "yes": "Ha",
         "no_edit": "Tahrir yo'q",
         "send_location": "Geolokatsiya yuborish",

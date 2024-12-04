@@ -5,7 +5,7 @@ from lang.messages import MESSAGES
 from loader import dp
 from utils.misc import add_group_message
 
-@dp.message_handler(text=["Не хочу", "Istamayman"])
+@dp.message_handler(text=["Не хочу", "Yuborishni xohlamayman", "Jibere almayman"])
 async def process_location_decline(message: Message, state: FSMContext):
     data = await state.get_data()
     locale = data.get("locale", "ru")
