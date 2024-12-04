@@ -29,5 +29,5 @@ async def send_birthday_message(message: Message, bot_username: str, locale):
     :param message: The incoming message object.
     :param bot_username: The username of the bot.
     """
-    text, reply_markup = generate_birthday_message(bot_username, message.chat.id)
+    text, reply_markup = generate_birthday_message(bot_username, message.chat.id, locale)
     await message.answer(text, reply_markup=reply_markup)
