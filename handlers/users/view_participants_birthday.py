@@ -29,7 +29,7 @@ async def view_participants_birthday(callback_query: CallbackQuery, state: FSMCo
         
         formatted_date = f"{day} {MESSAGES[locale]['months'][month - 1]}"
         
-        text += MESSAGES[locale]["birthday_list_item"].format(user.id, user.full_name, formatted_date)
+        text += MESSAGES[locale]["birthday_list_item"].format(i, user.id, user.full_name, formatted_date)
         i += 1
     back_button = InlineKeyboardMarkup().add(
         InlineKeyboardButton(text=MESSAGES[locale]["back"], callback_data=f"reminder_my_group_id:{rg_id}")

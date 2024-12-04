@@ -23,16 +23,7 @@ async def bot_start(message: types.Message, state: FSMContext):
         
         # Notify admins about the new user added
         msg = f"{user[1]} bazaga qo'shildi.\nBazada {count} ta foydalanuvchi bor."
-        await bot.send_message(chat_id=ADMINS[0], text=msg)
-        
-        # Send language selection message
-        text = (
-            "Выберите язык, на котором хотите использовать бота [ru]\n\n"
-            "Botdan foydalanmoqchi bo'lgan tilni tanlang [uz]\n\n"
-            "Bottan paydalanbaqshı bolǵan tildi saylań [kaa]"
-        )
-        await message.answer(text, reply_markup=languages_keyboard('set'))
-    
+        await bot.send_message(chat_id=ADMINS[0], text=msg)    
     except asyncpg.exceptions.UniqueViolationError:
         # Handle user already exists in the database
         pass
@@ -47,17 +38,18 @@ async def bot_start(message: types.Message, state: FSMContext):
             key, chat_id = decode_state.split(':')
             
             if key == 'addbirthday':
+                birthday = await db.get_user_birthday(message.from_user.id)
+                
+                if birthday:
+                    group = await bot.get_chat(int(chat_id))
+                    text = MESSAGES[locale]["birthday_added_to_group"].format(chat_id, group.title)
+                    await message.answer(text)
                 # Check if reminder group exists, otherwise create it
                 get_reminder_group = await db.reminder_group_exists(int(chat_id), message.from_user.id)
                 if not get_reminder_group:
                     await db.add_reminder_group(int(chat_id), message.from_user.id)
-                    birthday = await db.get_user_birthday(message.from_user.id)
-                    
-                    if birthday:
-                        group = await bot.get_chat(int(chat_id))
-                        text = MESSAGES[locale]["birthday_added_to_group"].format(chat_id, group.title)
-                        await message.answer(text)
-                        return
+                    return
+                return
         except (base64.binascii.Error, ValueError) as e:
             print(f"Error decoding state: {e}")
             

@@ -22,7 +22,7 @@ async def list_birthday(message: Message, state: FSMContext):
         
         formatted_date = f"{day} {MESSAGES[locale]['months'][month - 1]}"
         
-        text += MESSAGES[locale]["birthday_list_item"].format(user.id, user.full_name, formatted_date)
+        text += MESSAGES[locale]["birthday_list_item"].format(i, user.id, user.full_name, formatted_date)
         i += 1
         
     await message.reply(text)

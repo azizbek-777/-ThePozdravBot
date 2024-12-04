@@ -10,7 +10,7 @@ def create_group_keyboard(is_reminder_on: bool, group_id, rg_id, locale):
     # Define buttons based on reminder status
     add_birthday_button = InlineKeyboardButton(
         text=MESSAGES[locale]['add_birthday'] if not is_reminder_on else MESSAGES[locale]['delete_birthday'],
-        callback_data=f"onReminder:{group_id}" if not is_reminder_on else f"offReminder:{group_id}"
+        callback_data=f"onReminder:{group_id}:{rg_id}" if not is_reminder_on else f"offReminder:{group_id}:{rg_id}"
     )
     participants_button = InlineKeyboardButton(text=MESSAGES[locale]['participants'], callback_data=f"view_participants_birthday:{group_id}:{rg_id}")
     back_button = InlineKeyboardButton(text=MESSAGES[locale]['back'], callback_data="go_back")
