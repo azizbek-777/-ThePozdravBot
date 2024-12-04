@@ -72,7 +72,7 @@ MESSAGES = {
         "birthday_added_to_group": "✅ Tug‘ilgan kuningiz “<a href='tg://user?id={}'>{}</a>” guruhiga muvaffaqiyatli qo‘shildi\n\nEndi tug‘ilgan kuningizda guruhga bildirishnoma xabari yuboriladi.\n\nGuruhlardagi bildirishnomalarni boshqarish uchun /my_groups yuboring",
         "birthday_list_group": "Guruh a'zolarining tug'ilgan kunlari ro'yxati\n \"<b>{}</b>\"\n\n",
         "birthday_list_item": "{}. <a href='tg://user?id={}'>{}</a> - {}\n",
-        "oylar": [
+        "months": [
         "Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun",
         "Iyul", "Avgust", "Sentyabr", "Oktyabr", "Noyabr", "Dekabr"
         ],
