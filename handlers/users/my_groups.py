@@ -11,5 +11,5 @@ async def bot_my_groups(message: Message, state: FSMContext):
     locale = data.get("locale", "ru")
     text = MESSAGES[locale]["select_group"]
     groups = await db.my_reminder_groups(message.from_user.id)
-    keyboard = await my_groups_keyboard(groups, dp)
+    keyboard = await my_groups_keyboard(groups, dp, locale)
     await message.reply(text, reply_markup=keyboard)

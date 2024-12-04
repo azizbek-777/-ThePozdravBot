@@ -1,7 +1,10 @@
 from . import start
 from . import admin
 
+from . import go_main_menu
+
 from . import my_birthday
+from . import my_birthday_callback
 from . import callback_edit_birthday
 
 from . import language
@@ -10,7 +13,8 @@ from . import set_locale
 from . import new_chat_member
 from . import help
 from . import my_groups
-from . import go_back
+from . import my_groups_callback
+from . import go_back 
 
 from . import callback_reminder_my_group
 from . import on_off_reminder_in_group

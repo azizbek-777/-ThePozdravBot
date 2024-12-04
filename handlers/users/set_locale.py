@@ -1,6 +1,7 @@
 from aiogram.types import CallbackQuery
 from aiogram.dispatcher import FSMContext
 
+from keyboards.inline.main_keyboard import main_btn
 from lang import MESSAGES
 from loader import dp, db
 from utils.misc import set_birthday, add_group_message
@@ -27,3 +28,7 @@ async def set_locale(callback_query: CallbackQuery, state: FSMContext):
     if method == "update":
         text = MESSAGES[locale]['language_changed']
         await callback_query.message.answer(text)
+        text = MESSAGES[locale]['welcome'].format(callback_query.from_user.username)
+        bot = await dp.bot.get_me()
+        keyboard = main_btn(bot.username, locale)
+        await callback_query.message.answer(text, disable_web_page_preview=True, reply_markup=keyboard)

@@ -1,6 +1,7 @@
 MESSAGES = {
     "ru": {
         "hello": "Привет, <a href='tg://user?id={}'>{}</a>!\nЯ помогу вашей группе не забыть о днях рождения. Пользуясь ботом, вы соглашаетесь с нашим <a href='https://telegra.ph/Obrabotka-dannyh-11-29'>пользовательским соглашением</a>",
+        "welcome": "Добро пожаловать, @{}!\nНажмите кнопку, чтобы продолжить 👇",
         "add_group": "Добавьте меня в группу, чтобы я мог напоминать о днях рождениях! Просто нажмите на кнопку ниже, чтобы добавить меня в группу.",
         "reminder_my_group_info": "Название группы: “<b>{}</b>” \n\n<b>Уведомление: {}</b>\n{}\n\nЧтобы посмотреть день рождения участников, нажмите на кнопку “Участники”",
         "reminder_on": "✅ Включено",
@@ -11,7 +12,7 @@ MESSAGES = {
         "add_birthday": "✅ Добавить день рождения",
         "delete_birthday": "🚫 Удалить день рождения",
         "participants": "👥 Участники",
-        "back": "⬅ Назад",
+        "back": "🔙 Назад",
         "select_group": "Выберите группу, которую вы хотите настроить.",
         "help_command": "/language - Изменение языка бота\n/my_birthday - Изменить или Добавить день рождения\n",
         "select_language": "🌍 Выберите язык, на котором хотите использовать бота:",
@@ -42,9 +43,12 @@ MESSAGES = {
         "no_edit": "Нет изменить",
         "send_location": "Отправить локацию",
         "dont_want": "Не хочу",
+        "my_groups": "Мои группы",
+        "my_birthday": "Мой день рождения",
     },
     "uz": {
         "hello": "Assalomu alaykum, <a href='tg://user?id={}'>{}</a>!\nMen guruhingizda tug‘ilgan kunlarni eslatishga yordam beraman. Botdan foydalanish orqali siz <a href='https://telegra.ph/Obrabotka-dannyh-11-29'>foydalanuvchi shartnomasi</a>ga rozilik bildirasiz.",
+        "welcome": "Xush kelibsiz, @{}!\nDavom etish uchun tugmani bosing👇",
         "add_group": "Tug'ilgan kun bildirishnomalarini yuborishim uchun meni guruhga qo'shing! Qo'shish uchun quyidagi tugmani bosing.",
         "reminder_my_group_info": "Guruh nomi: “<b>{}</b>” \n\n<b>Bildirishnoma: {}</b>\n{}\n\nGuruh a'zolarning tug‘ilgan kunini ko‘rish uchun \"Guruh a'zolari\" tugmasini bosing.",
         "reminder_on": "✅ Yoqilgan",
@@ -55,7 +59,7 @@ MESSAGES = {
         "add_birthday": "✅ Tug'ilgan kunni qo'shish",
         "delete_birthday": "🚫Tug'ilgan kunni o'chirish",
         "participants": "👥 Ro'yxatdan o'tgan guruh a'zolari",
-        "back": "⬅ Orqaga",
+        "back": "🔙 Orqaga",
         "select_group": "Sozlanmoqchi bo'lgan guruhni tanlang.",
         "help_command": "/language - Bot tilini o'zgartirish\n/my_birthday - Tug'ilgan kunni o'zgartirish yoki qo'shish\n",
         "select_language": "🌍 Botni qaysi tilda ishlatmoqchi ekanligingizni tanlang:",
@@ -84,10 +88,13 @@ MESSAGES = {
         "yes": "Ha",
         "no_edit": "Tahrir yo'q",
         "send_location": "Geolokatsiya yuborish",
-        "dont_want": "Yuborishni xohlamayman"
+        "dont_want": "Yuborishni xohlamayman",
+        "my_groups": "Mening guruhlarim",
+        "my_birthday": "Mening tug'ilgan kunim"
     },
     "ka": {
         "hello": "Assalawma aleykum, <a href='tg://user?id={}'>{}</a>! \nMen toparıńızda tuwılǵan kúnlerdi esletiwge járdem beremen. Botdan paydalanıw arqalı siz <a href='https://telegra.ph/Obrabotka-dannyh-11-29'>paydalanıwshı shártnaması</a>ǵa razılıq bildiresiz.",
+        "welcome": "Xosh keldińiz @{}!\nDawam eytıw ushin túymeni basıń 👇",
         "add_group": "Tuwılǵan kún esletpelerin jiberiwim ushın meni toparǵa qosıń! Qosıw ushın tómendegi tuymeni basıń.",
         "reminder_my_group_info": "Topar atı : {}\n\nEsletpe : {}\n{}\n\nTopar aǵzalarınıń tuwılǵan kúnleri dizimin kóriw ushın 'Topar aǵzaları' tuymesin basıń",
         "reminder_on": "✅ Qosılǵan",
@@ -98,7 +105,7 @@ MESSAGES = {
         "add_birthday": "✅ Tuwılǵan kúndi qosıw",
         "delete_birthday": "🚫 Tuwılǵan kúndi óshiriw",
         "participants": "👥 Qatnasıwshılar",
-        "back": "⬅ artqa qaytıw",
+        "back": "🔙 artqa qaytıw",
         "select_group": "Ózgertpekshi bolǵan toparıńızdı saylań. ",
         "help_command": "/language - Bot tilin ózgertiw\n/my_birthday - Tuwılǵan kúndi ózgertiw yamasa qosıw\n",
         "select_language": "🌍 Bottı qaysı tilde isletpekshi ekenligińizdi saylań :",
@@ -128,5 +135,7 @@ MESSAGES = {
         "no_edit": "Yaq, ózgertiw",
         "send_location": "Geolokatsiya jiberiw",
         "dont_want": "Jibere almayman",
+        "my_groups": "Mening toparlarım",
+        "my_birthday": "Meniń tuwılǵan kúnim"
     },
 }

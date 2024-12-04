@@ -11,5 +11,5 @@ async def go_back(callback_query: CallbackQuery, state: FSMContext):
     locale = data.get("locale", "ru")
     text = MESSAGES[locale]["select_group"]
     groups = await db.my_reminder_groups(callback_query.from_user.id)
-    keyboard = await my_groups_keyboard(groups, dp)
+    keyboard = await my_groups_keyboard(groups, dp, locale)
     await callback_query.message.edit_text(text, reply_markup=keyboard)
