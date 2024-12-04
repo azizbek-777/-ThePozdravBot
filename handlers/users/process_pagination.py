@@ -16,5 +16,5 @@ async def process_pagination(callback_query: CallbackQuery):
     else:
         new_start_year = current_start_year + YEARS_PER_PAGE
     
-    keyboard = generate_years_keyboard(new_start_year)
+    keyboard = generate_years_keyboard(int(new_start_year))
     await callback_query.message.edit_reply_markup(reply_markup=keyboard)

@@ -1,6 +1,6 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-def generate_years_keyboard(start_year: int):
+def generate_years_keyboard(start_year: int = 2001):
     keyboard = InlineKeyboardMarkup(row_width=5)
     
     navigation_buttons = [
@@ -11,7 +11,7 @@ def generate_years_keyboard(start_year: int):
     
     year_buttons = [
         InlineKeyboardButton(text=str(year), callback_data=f"year:{year}")
-        for year in range(start_year, start_year + 20)
+        for year in range(int(start_year), int(start_year) + 20)
     ]
     keyboard.add(*year_buttons)
     
