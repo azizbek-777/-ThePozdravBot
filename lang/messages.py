@@ -1,7 +1,7 @@
 MESSAGES = {
     "ru": {
         "hello": "Привет, <a href='tg://user?id={}'>{}</a>!\nЯ помогу вашей группе не забыть о днях рождения. Пользуясь ботом, вы соглашаетесь с нашим <a href='https://telegra.ph/Obrabotka-dannyh-11-29'>пользовательским соглашением</a>",
-        "welcome": "Добро пожаловать, @{}!\nНажмите кнопку, чтобы продолжить 👇",
+        "welcome": "Добро пожаловать, {}!\nНажмите кнопку, чтобы продолжить 👇",
         "add_group": "Добавьте меня в группу, чтобы я мог напоминать о днях рождениях! Просто нажмите на кнопку ниже, чтобы добавить меня в группу.",
         "reminder_my_group_info": "Название группы: “<b>{}</b>” \n\n<b>Уведомление: {}</b>\n{}\n\nЧтобы посмотреть день рождения участников, нажмите на кнопку “Участники”",
         "reminder_on": "✅ Включено",
@@ -50,7 +50,7 @@ MESSAGES = {
     },
     "uz": {
         "hello": "Assalomu alaykum, <a href='tg://user?id={}'>{}</a>!\nMen guruhingizda tug‘ilgan kunlarni eslatishga yordam beraman. Botdan foydalanish orqali siz <a href='https://telegra.ph/Obrabotka-dannyh-11-29'>foydalanuvchi shartnomasi</a>ga rozilik bildirasiz.",
-        "welcome": "Xush kelibsiz, @{}!\nDavom etish uchun tugmani bosing👇",
+        "welcome": "Xush kelibsiz, {}!\nDavom etish uchun tugmani bosing👇",
         "add_group": "Tug'ilgan kun bildirishnomalarini yuborishim uchun meni guruhga qo'shing! Qo'shish uchun quyidagi tugmani bosing.",
         "reminder_my_group_info": "Guruh nomi: “<b>{}</b>” \n\n<b>Bildirishnoma: {}</b>\n{}\n\nGuruh a'zolarning tug‘ilgan kunini ko‘rish uchun \"Guruh a'zolari\" tugmasini bosing.",
         "reminder_on": "✅ Yoqilgan",
@@ -98,7 +98,7 @@ MESSAGES = {
     },
     "ka": {
         "hello": "Assalawma aleykum, <a href='tg://user?id={}'>{}</a>! \nMen toparıńızda tuwılǵan kúnlerdi esletiwge járdem beremen. Botdan paydalanıw arqalı siz <a href='https://telegra.ph/Obrabotka-dannyh-11-29'>paydalanıwshı shártnaması</a>ǵa razılıq bildiresiz.",
-        "welcome": "Xosh keldińiz @{}!\nDawam eytıw ushin túymeni basıń 👇",
+        "welcome": "Xosh keldińiz {}!\nDawam eytıw ushin túymeni basıń 👇",
         "add_group": "Siziń tuwılǵan kúnińizdi jaqın tanıslarıńızǵa esletip turıwım ushın meni telegram toparǵa qosıń! Qosıw ushın tómendegi tuymeni basıń👇",
         "reminder_my_group_info": "Topar atı : {}\n\nEsletpe : {}\n{}\n\nTopar aǵzalarınıń tuwılǵan kúnleri dizimin kóriw ushın 'Topar aǵzaları' tuymesin basıń",
         "reminder_on": "✅ Qosılǵan",
