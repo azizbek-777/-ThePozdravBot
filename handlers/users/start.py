@@ -72,7 +72,7 @@ async def bot_start(message: types.Message, state: FSMContext):
     if username is None:
         username = f"<a href='tg://user?id={message.from_user.id}'>{message.from_user.full_name}</a>"
     
-    text = MESSAGES[locale]['welcome'].format(message.from_user.username)
+    text = MESSAGES[locale]['welcome'].format(message.from_user.full_name)
     bot = await dp.bot.get_me()
     keyboard = main_btn(bot.username, locale)
     await message.answer(text, disable_web_page_preview=True, reply_markup=keyboard)
