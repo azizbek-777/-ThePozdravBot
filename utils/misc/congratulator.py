@@ -32,6 +32,12 @@ async def send_congratulation_message(dp: Dispatcher, db):
             
             # Check if today is the user's birthday
             if birthday.day == now.day and birthday.month == now.month:
+                # check user member in the group
+                member = await dp.bot.get_chat_member(group_id, user_id)
+                if member.status == "left":
+                    await db.remove_user_in_rm_group(message.chat.id, user_id)
+                    continue
+                
                 user = await dp.bot.get_chat(user_id)
                 username = user.username
                 if not username:
