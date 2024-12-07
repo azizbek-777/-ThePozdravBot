@@ -195,7 +195,8 @@ class Database:
             WHERE
                 rg.group_id = $1
             ORDER BY
-                u.birthday DESC
+                EXTRACT(MONTH FROM u.birthday) DESC,
+                EXTRACT(DAY FROM u.birthday) DESC
         """
         return await self.execute(query, group_id, fetch=True)
 
