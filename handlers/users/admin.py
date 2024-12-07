@@ -15,7 +15,8 @@ from utils.misc.export_excel import export_votes_to_excel
 async def commad_admin(message: types.Message, state: FSMContext):
     await state.finish()
     users_count = await db.count_users()
-    await message.answer(f"Добро пожаловать в панель администратора!🤗\n\nколичество пользователей: {users_count}\n\n👇 Выбирайте меню", reply_markup=admin_main_btn())
+    groups_count = await db.count_groups()
+    await message.answer(f"Добро пожаловать в панель администратора!🤗\n\n👤пользователи: {users_count}\n👥группы: {groups_count}\n\n👇 Выбирайте меню", reply_markup=admin_main_btn())
 
 @dp.callback_query_handler(text="export_votes")
 async def export_votes(call: types.CallbackQuery):

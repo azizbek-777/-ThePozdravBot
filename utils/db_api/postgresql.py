@@ -222,6 +222,10 @@ class Database:
     async def count_users(self):
         sql = "SELECT COUNT(*) FROM Users"
         return await self.execute(sql, fetchval=True)
+    
+    async def count_groups(self):
+        sql = "SELECT COUNT(*) FROM Groups"
+        return await self.execute(sql, fetchval=True)
 
     async def update_user_username(self, username, telegram_id):
         sql = "UPDATE Users SET username=$1 WHERE telegram_id=$2"
