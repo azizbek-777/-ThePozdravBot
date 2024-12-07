@@ -19,6 +19,7 @@ async def list_birthday(message: Message, state: FSMContext):
             # check user member in the group
             member = await dp.bot.get_chat_member(message.chat.id, user_id)
             if member.status == "left":
+                await db.remove_user_in_rm_group(message.chat.id, user_id)
                 continue
             
             user = await dp.bot.get_chat(user_id)

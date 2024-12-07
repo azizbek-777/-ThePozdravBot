@@ -91,6 +91,15 @@ class Database:
         ])
         return sql, tuple(parameters.values())
     
+    async def remove_user_in_rm_group(self, group_id, user_id):
+        query = """
+        DELETE FROM 
+            public.remindergroups
+        WHERE
+            group_id = $1 AND user_id = $2
+        """
+        return await self.execute(query, group_id, user_id, execute=True)
+    
     async def add_group(self, telegram_id):
         sql = "INSERT INTO groups (telegram_id) VALUES($1) returning *"
         return await self.execute(sql, telegram_id, fetchrow=True)
