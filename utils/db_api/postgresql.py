@@ -180,14 +180,13 @@ class Database:
     
         
     async def get_reminder_groups_with_users_where_group_id(self, group_id):
-        query = """
+        query = f"""
             WITH adjusted_birthdays AS (
                 SELECT 
                     rg.group_id, 
                     rg.user_id, 
                     u.birthday, 
                     u.timezone,
-                    -- Tug'ilgan kunni joriy yilga moslashtirish
                     CASE 
                         WHEN TO_DATE(TO_CHAR(NOW(), 'YYYY') || '-' || TO_CHAR(u.birthday, 'MM-DD'), 'YYYY-MM-DD') >= NOW()
                         THEN TO_DATE(TO_CHAR(NOW(), 'YYYY') || '-' || TO_CHAR(u.birthday, 'MM-DD'), 'YYYY-MM-DD')
@@ -200,7 +199,7 @@ class Database:
                 ON 
                     rg.user_id = u.telegram_id
                 WHERE
-                    rg.group_id = -1002457829190
+                    rg.group_id = {group_id}
             )
             SELECT 
                 group_id, 
@@ -213,8 +212,7 @@ class Database:
             ORDER BY 
                 next_birthday ASC
         """
-        return await self.execute(query, group_id, fetch=True)
-
+        return await self.execute(query, fetch=True)
 
     async def add_user(self, full_name, username, telegram_id):
         sql = "INSERT INTO users (full_name, username, telegram_id) VALUES($1, $2, $3) returning *"
