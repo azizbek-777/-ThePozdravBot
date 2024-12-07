@@ -15,6 +15,12 @@ async def list_birthday(message: Message, state: FSMContext):
     i = 1
     for _, user_id, birthday, _ in data:
         if birthday:  # Check if birthday is not None
+            
+            # check user member in the group
+            member = await dp.bot.get_chat_member(message.chat.id, user_id)
+            if member.status == "left":
+                continue
+            
             user = await dp.bot.get_chat(user_id)
 
             try:
@@ -30,11 +36,5 @@ async def list_birthday(message: Message, state: FSMContext):
                 # Handle case where the date is not in the expected format
                 text += MESSAGES[locale]["birthday_list_item_invalid_date"].format(i, user.id, user.full_name)
                 i += 1
-        else:
-            continue
-            # Handle case where birthday is None
-            user = await dp.bot.get_chat(user_id)
-            text += MESSAGES[locale]["birthday_list_item_no_birthday"].format(i, user.id, user.full_name)
-            i += 1
         
     await message.reply(text)
