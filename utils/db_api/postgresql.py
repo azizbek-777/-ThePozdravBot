@@ -180,39 +180,29 @@ class Database:
     
         
     async def get_reminder_groups_with_users_where_group_id(self, group_id):
-        query = f"""
-            WITH adjusted_birthdays AS (
-                SELECT 
-                    rg.group_id, 
-                    rg.user_id, 
-                    u.birthday, 
-                    u.timezone,
-                    CASE 
-                        WHEN TO_DATE(TO_CHAR(NOW(), 'YYYY') || '-' || TO_CHAR(u.birthday, 'MM-DD'), 'YYYY-MM-DD') >= NOW()
-                        THEN TO_DATE(TO_CHAR(NOW(), 'YYYY') || '-' || TO_CHAR(u.birthday, 'MM-DD'), 'YYYY-MM-DD')
-                        ELSE TO_DATE(TO_CHAR(NOW() + INTERVAL '1 year', 'YYYY') || '-' || TO_CHAR(u.birthday, 'MM-DD'), 'YYYY-MM-DD')
-                    END AS next_birthday
-                FROM 
-                    public.remindergroups rg
-                JOIN 
-                    users u 
-                ON 
-                    rg.user_id = u.telegram_id
-                WHERE
-                    rg.group_id = {group_id}
-            )
+        query = """
             SELECT 
-                group_id, 
-                user_id, 
-                birthday, 
-                timezone, 
-                next_birthday
+                rg.group_id, 
+                rg.user_id, 
+                u.birthday, 
+                u.timezone
             FROM 
-                adjusted_birthdays
-            ORDER BY 
-                next_birthday ASC
+                public.remindergroups rg
+            JOIN 
+                users u 
+            ON 
+                rg.user_id = u.telegram_id
+            WHERE
+                rg.group_id = $1
+            ORDER BY
+                TO_DATE(
+                    CASE 
+                        WHEN TO_CHAR(u.birthday, 'MM-DD') >= TO_CHAR(NOW(), 'MM-DD') THEN TO_CHAR(NOW(), 'YYYY') || '-' || TO_CHAR(u.birthday, 'MM-DD')
+                        ELSE TO_CHAR(NOW() + INTERVAL '1 year', 'YYYY') || '-' || TO_CHAR(u.birthday, 'MM-DD')
+                    END, 'YYYY-MM-DD'
+                ) ASC
         """
-        return await self.execute(query, fetch=True)
+        return await self.execute(query, group_id, fetch=True)
 
     async def add_user(self, full_name, username, telegram_id):
         sql = "INSERT INTO users (full_name, username, telegram_id) VALUES($1, $2, $3) returning *"
