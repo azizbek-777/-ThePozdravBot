@@ -181,29 +181,37 @@ class Database:
         
     async def get_reminder_groups_with_users_where_group_id(self, group_id):
         query = """
+            WITH adjusted_birthdays AS (
+                SELECT 
+                    rg.group_id, 
+                    rg.user_id, 
+                    u.birthday, 
+                    u.timezone,
+                    -- Tug'ilgan kunni joriy yilga moslashtirish
+                    CASE 
+                        WHEN TO_DATE(TO_CHAR(NOW(), 'YYYY') || '-' || TO_CHAR(u.birthday, 'MM-DD'), 'YYYY-MM-DD') >= NOW()
+                        THEN TO_DATE(TO_CHAR(NOW(), 'YYYY') || '-' || TO_CHAR(u.birthday, 'MM-DD'), 'YYYY-MM-DD')
+                        ELSE TO_DATE(TO_CHAR(NOW() + INTERVAL '1 year', 'YYYY') || '-' || TO_CHAR(u.birthday, 'MM-DD'), 'YYYY-MM-DD')
+                    END AS next_birthday
+                FROM 
+                    public.remindergroups rg
+                JOIN 
+                    users u 
+                ON 
+                    rg.user_id = u.telegram_id
+                WHERE
+                    rg.group_id = -1002457829190
+            )
             SELECT 
-                rg.group_id, 
-                rg.user_id, 
-                u.birthday, 
-                u.timezone,
-                (
-                    EXTRACT(
-                        DAY FROM (
-                            u.birthday + INTERVAL '1 year' * 
-                            CASE WHEN u.birthday < CURRENT_DATE THEN 1 ELSE 0 END
-                        ) - CURRENT_DATE
-                    )
-                ) AS days_until_birthday
+                group_id, 
+                user_id, 
+                birthday, 
+                timezone, 
+                next_birthday
             FROM 
-                public.remindergroups rg
-            JOIN 
-                users u 
-            ON 
-                rg.user_id = u.telegram_id
-            WHERE
-                rg.group_id = $1
-            ORDER BY
-                days_until_birthday ASC
+                adjusted_birthdays
+            ORDER BY 
+                next_birthday ASC
         """
         return await self.execute(query, group_id, fetch=True)
 
