@@ -185,7 +185,15 @@ class Database:
                 rg.group_id, 
                 rg.user_id, 
                 u.birthday, 
-                u.timezone 
+                u.timezone,
+                (
+                    EXTRACT(
+                        DAY FROM (
+                            u.birthday + INTERVAL '1 year' * 
+                            CASE WHEN u.birthday < CURRENT_DATE THEN 1 ELSE 0 END
+                        ) - CURRENT_DATE
+                    )
+                ) AS days_until_birthday
             FROM 
                 public.remindergroups rg
             JOIN 
@@ -195,10 +203,10 @@ class Database:
             WHERE
                 rg.group_id = $1
             ORDER BY
-                EXTRACT(MONTH FROM u.birthday) ASC,
-                EXTRACT(DAY FROM u.birthday) ASC
+                days_until_birthday ASC
         """
         return await self.execute(query, group_id, fetch=True)
+
 
     async def add_user(self, full_name, username, telegram_id):
         sql = "INSERT INTO users (full_name, username, telegram_id) VALUES($1, $2, $3) returning *"
