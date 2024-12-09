@@ -15,10 +15,11 @@ async def on_startup(dispatcher):
 
     # Bot ishga tushgani haqida adminga xabar berish
     await on_startup_notify(dispatcher)
-    scheduler.start()
+    if not scheduler.running:
+        scheduler.start()
     scheduler_jobs()
 
 
 if __name__ == '__main__':
     from aiogram import executor
-    executor.start_polling(dp, on_startup=on_startup)
+    executor.start_polling(dp, on_startup=on_startup, skip_updates=True)
