@@ -20,4 +20,6 @@ def scheduler_jobs():
         send_congratulation_message,
         CronTrigger(hour=0, minute=0, timezone=timezone('Asia/Tashkent')),  # Soat 00:00, Tashkent vaqti
         args=(dp, db),
+        id="send_congratulation_message",
+        replace_existing=True
     )
