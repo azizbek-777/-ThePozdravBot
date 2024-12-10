@@ -18,17 +18,15 @@ scheduler = AsyncIOScheduler()
 def scheduler_jobs():
     job_id = "send_congratulation_message"
 
-    # Barcha ishlarni tekshirish
     all_jobs = scheduler.get_jobs()
     print('all_jobs', all_jobs)
     for job in all_jobs:
-        if job.id != job_id:  # Agar job_id mos kelmasa
-            scheduler.remove_job(job.id)  # O'chirish
+        if job.id != job_id: 
+            scheduler.remove_job(job.id)
 
-    # Yangi ish qo'shish
     scheduler.add_job(
         send_congratulation_message,
-        CronTrigger(hour=0, minute=0, timezone=timezone('Asia/Tashkent')),
+        CronTrigger(hour=0, timezone=timezone('Asia/Tashkent')),
         args=(dp, db),
         id=job_id,
         replace_existing=True
