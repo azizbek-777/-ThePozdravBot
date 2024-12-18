@@ -24,9 +24,6 @@ async def bot_start(message: types.Message, state: FSMContext):
                                  username=message.from_user.username)
         count = await db.count_users()
         
-        # Notify admins about the new user added
-        msg = f"{user[1]} bazaga qo'shildi.\nBazada {count} ta foydalanuvchi bor."
-        await dp.bot.send_message(chat_id=ADMINS[0], text=msg)
         await message.answer(
         "Выберите язык, на котором хотите использовать бота [ru]\n\n"
         "Botdan foydalanmoqchi bo'lgan tilni tanlang [uz]\n\n"
